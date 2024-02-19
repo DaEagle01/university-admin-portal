@@ -15,7 +15,7 @@ const MainLayout: FC = () => {
     }
 
     return (
-        <Layout style={{ height: "100vh" }}>
+        <Layout style={{ height: '100%' }}>
             <Sidebar />
             <Layout>
                 <Header style={{ paddingLeft: 16 }}>
