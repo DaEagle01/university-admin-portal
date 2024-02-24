@@ -1,13 +1,14 @@
 import { Form, Select } from 'antd';
 import { Controller } from 'react-hook-form';
 
-type TPHSelectProps = {
+type TParentSelectProps = {
     label: string;
     name: string;
-    options: { value: string; label: string; disabled?: boolean }[];
+    options: { value: string; label: string; disabled?: boolean }[] | undefined;
+    disabled?: boolean;
 };
 
-const ParentSelect = ({ label, name, options }: TPHSelectProps) => {
+const ParentSelect = ({ label, name, options, disabled }: TParentSelectProps) => {
     return (
         <Controller
             name={name}
@@ -18,6 +19,7 @@ const ParentSelect = ({ label, name, options }: TPHSelectProps) => {
                         {...field}
                         options={options}
                         size="large"
+                        disabled={disabled}
                     />
                     {error && <small style={{ color: 'red' }}>{error.message}</small>}
                 </Form.Item>

@@ -1,14 +1,14 @@
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import ParentForm from "../../../../components/form/ParentForm"
 import { Button, Col, Flex } from "antd";
-import ParentSelect from "../../../../components/form/ParentSelect";
-import { semesterOptions } from "../../../../constants/semester";
-import { monthOptions } from "../../../../constants/global";
 import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { academicSemesterSchema } from "../../../../schemas/academicManagement.schema";
-import { useAddAcademicSemesterMutation } from "../../../../redux/features/admin/academicManagement.api";
-import { TResponse } from "../../../../types";
+import { useAddAcademicSemesterMutation } from "../../../redux/features/admin/academicManagement.api";
+import { semesterOptions } from "../../../constants/semester";
+import { TResponse } from "../../../types";
+import { academicSemesterSchema } from "../../../schemas/academicManagement.schema";
+import ParentSelect from "../../../components/form/ParentSelect";
+import ParentForm from "../../../components/form/ParentForm";
+import { monthOptions } from "../../../constants/global";
 
 const currentYear = new Date().getFullYear();
 const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
@@ -29,10 +29,9 @@ const CreateAcademicSemester = () => {
             startMonth: data.startMonth,
             endMonth: data.endMonth,
         };
-        console.log(semesterData);
+
         try {
             const res = (await addAcademicSemester(semesterData)) as TResponse<undefined>;
-            console.log(123, res);
             if (res.error) {
                 toast.error(res.error.data.message, { id: toastId });
             } else {

@@ -1,6 +1,5 @@
-import OfferedCourse from "../pages/admin/faculty/OfferedCourse";
-import StudentDashboard from "../pages/admin/student/StudentDashboard";
-
+import OfferedCourse from "../pages/student/OfferedCourse";
+import StudentDashboard from "../pages/student/StudentDashboard";
 
 export const studentPaths = [
   {
