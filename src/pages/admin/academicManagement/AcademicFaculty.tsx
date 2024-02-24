@@ -2,6 +2,7 @@ import { Button, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { TAcademicFaculty } from '../../../types';
 import { useGetAcademicFacultiesQuery } from '../../../redux/features/admin/academicManagement.api';
+import { formatDate } from '../../../utils/formatDate';
 
 export type TTableData = Pick<
   TAcademicFaculty,
@@ -30,11 +31,13 @@ const AcademicFaculty = () => {
       title: 'Created At',
       key: 'createdAt',
       dataIndex: 'createdAt',
+      render: text => <p>{formatDate(text)}</p>
     },
     {
       title: 'Updated At',
       key: 'updatedAt',
       dataIndex: 'updatedAt',
+      render: text => <p>{formatDate(text)}</p>
     },
     {
       title: 'Action',
